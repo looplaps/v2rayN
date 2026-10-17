@@ -3,6 +3,8 @@ on:
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   sync:
     runs-on: ubuntu-latest
@@ -10,6 +12,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: true
       - run: |
           git config --global user.name "looplaps"
           git config --global user.email "87746958+looplaps@users.noreply.github.com"
